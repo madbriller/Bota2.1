@@ -4,6 +4,7 @@
 #include <Qstring>
 #include <QDate>
 
+//gotta add dated functions
 
 struct matchData{
     QDate matchDate;
@@ -23,14 +24,13 @@ class matchManager
 
 public:
     matchManager();
-    void prepAllGamesByTeam(int teamID);
-    void prepAllGamesByVs(int team1ID, int team2ID);
+    bool prepAllGamesByTeam(int teamID);
+    bool prepAllGamesByVs(int team1ID, int team2ID);
     int getMatchWinByTeam(int teamID); //returns as a percentage
     int getGameWinByTeam(int teamID); //returns as a percentage
     int getBoByNoAndTeam(int bestOfCount, int teamID); //returns as a percentage
-    int getMatchCountByTeam(int teamID);
     int getTotalMatchCount();
-
+    bool hasRecords();
 
 };
 

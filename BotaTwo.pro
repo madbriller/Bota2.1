@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         bota2.cpp \
     databasemanager.cpp \
-    matchmanager.cpp
+    matchmanager.cpp \
+    teammanager.cpp
 
 HEADERS  += bota2.h \
     databasemanager.h \
-    matchmanager.h
+    matchmanager.h \
+    teammanager.h
 
 FORMS    += bota2.ui
