@@ -6,22 +6,22 @@ bool matchManager::prepAllGamesByTeam(int teamID) {
     databaseManager* dbm = databaseManager::instance(); //get instance of database manager singleton
 
     QString theQuery("SELECT * FROM matches WHERE teamOne = "); //prepare the query string
-    theQuery += string(itoa(teamID));                           //probably better ways
+    theQuery += QString::number(teamID);                           //probably better ways
     theQuery += " OR teamTwo = ";
-    theQuery += string(itoa(teamID));
+    theQuery += QString::number(teamID) + ";";
 
     if (dbm->prepareAndExecQuery(theQuery) == true) { //execute query, and if successful..
         int rows = dbm->getRowCount();
         for (int ite=1;ite<=rows;ite++) { //iterate through all matches, creating a record
             QSqlRecord matchRecord = dbm->getNextRow();
             matchData currentMatch;
-            currentMatch.team1ID = matchRecord.value(1);
-            currentMatch.team2ID = matchRecord.value(2);
-            currentMatch.winnerID = matchRecord.value(3);
-            currentMatch.noOfGames = matchRecord.value(4);
-            currentMatch.team1Wins = matchRecord.value(5);
-            currentMatch.team1Wins = matchRecord.value(6);
-            currentMatch.matchDate =  QDate::fromString(query.value(7).toString());
+            currentMatch.team1ID = matchRecord.value(1).toInt();
+            currentMatch.team2ID = matchRecord.value(2).toInt();
+            currentMatch.winnerID = matchRecord.value(3).toInt();
+            currentMatch.noOfGames = matchRecord.value(4).toInt();
+            currentMatch.team1Wins = matchRecord.value(5).toInt();
+            currentMatch.team1Wins = matchRecord.value(6).toInt();
+            currentMatch.matchDate = QDate::fromString(matchRecord.value(7).toString());
             currentMatchSet.push_front(currentMatch); //create a record and push into storage
             return true;
         }
@@ -35,27 +35,27 @@ bool matchManager::prepAllGamesByVs(int team1ID, int team2ID) {
     databaseManager* dbm = databaseManager::instance(); //get instance of database manager singleton
 
     QString theQuery("SELECT * FROM matches WHERE (teamOne = "); //prepare the query string
-    theQuery += string(itoa(team1ID));                           //probably better ways
+    theQuery += QString::number(team1ID);   //probably better ways
     theQuery += " AND teamTwo = ";
-    theQuery += string(itoa(team2ID));
+    theQuery += QString::number(team2ID);
     theQuery += ") OR (teamOne = ";
-    theQuery += string(itoa(team2ID));
+    theQuery += QString::number(team2ID);
     theQuery += " AND teamTwo = ";
-    theQuery += string(itoa(team1ID));
-    theQuery += ")";
+    theQuery += QString::number(team1ID);
+    theQuery += ");";
 
     if (dbm->prepareAndExecQuery(theQuery) == true) { //execute query, and if successful..
         int rows = dbm->getRowCount();
         for (int ite=1;ite<=rows;ite++) { //iterate through all matches, creating a record
             QSqlRecord matchRecord = dbm->getNextRow();
             matchData currentMatch;
-            currentMatch.team1ID = matchRecord.value(1);
-            currentMatch.team2ID = matchRecord.value(2);
-            currentMatch.winnerID = matchRecord.value(3);
-            currentMatch.noOfGames = matchRecord.value(4);
-            currentMatch.team1Wins = matchRecord.value(5);
-            currentMatch.team1Wins = matchRecord.value(6);
-            currentMatch.matchDate =  QDate::fromString(query.value(7).toString());
+            currentMatch.team1ID = matchRecord.value(1).toInt();
+            currentMatch.team2ID = matchRecord.value(2).toInt();
+            currentMatch.winnerID = matchRecord.value(3).toInt();
+            currentMatch.noOfGames = matchRecord.value(4).toInt();
+            currentMatch.team1Wins = matchRecord.value(5).toInt();
+            currentMatch.team1Wins = matchRecord.value(6).toInt();
+            currentMatch.matchDate =  QDate::fromString(matchRecord.value(7).toString());
             currentMatchSet.push_front(currentMatch); //create a record and push into storage
             return true;
         }
@@ -65,7 +65,7 @@ bool matchManager::prepAllGamesByVs(int team1ID, int team2ID) {
 
 int matchManager::getMatchWinByTeam(int teamID) {
     QMap<int,int> results;
-    foreach(matchData &currentMatch, currentMatchSet) {
+    foreach(matchData currentMatch, currentMatchSet) {
         results[currentMatch.team1ID] += currentMatch.team1Wins;
         results[currentMatch.team2ID] += currentMatch.team2Wins;
     }
@@ -84,7 +84,7 @@ int matchManager::getMatchWinByTeam(int teamID) {
 
 int matchManager::getGameWinByTeam(int teamID){
     QMap<int,int> results;
-    foreach(matchData &currentMatch, currentMatchSet) {
+    foreach(matchData currentMatch, currentMatchSet) {
         results[currentMatch.team1ID] += currentMatch.team1Wins;
         results[currentMatch.team2ID] += currentMatch.team2Wins;
     }
@@ -108,7 +108,7 @@ int matchManager::getGameWinByTeam(int teamID){
 int matchManager::getBoByNoAndTeam(int bestOfCount, int teamID){
     QMap<int,int> results;
     int matchCount;
-    foreach (matchData &currentMatch, currentMatchSet) {
+    foreach (matchData currentMatch, currentMatchSet) {
         if(currentMatch.noOfGames == bestOfCount) {
             results[currentMatch.team1ID] += currentMatch.team1Wins;
             results[currentMatch.team2ID] += currentMatch.team2Wins;

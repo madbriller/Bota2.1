@@ -23,4 +23,8 @@ HEADERS  += bota2.h \
     matchmanager.h \
     teammanager.h
 
-FORMS    += bota2.ui
+FORMS    += \
+    bota2.ui
+
+OTHER_FILES += \
+    bota2.asdadui

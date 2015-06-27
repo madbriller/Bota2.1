@@ -11,7 +11,7 @@ private:
     int rowCount;
 public:
     int getRowCount();
-    databaseManager* instance();
+    static databaseManager* instance();
     bool isReady();
     ~databaseManager();
     bool prepareAndExecQuery(QString queryString);
