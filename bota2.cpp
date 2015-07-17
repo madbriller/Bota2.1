@@ -3,11 +3,17 @@
 
 
 
+void Bota2::updateTeamOneInfo()
+{
+
+}
+
 Bota2::Bota2(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Bota2)
 {
     ui->setupUi(this);
+
 }
 
 Bota2::~Bota2()

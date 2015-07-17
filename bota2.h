@@ -2,7 +2,8 @@
 #define BOTA2_H
 
 #include <QMainWindow>
-#include "databasemanager.h"
+#include "matchmanager.h"
+#include "teammanager.h"
 
 namespace Ui {
 class Bota2;
@@ -13,6 +14,9 @@ class Bota2 : public QMainWindow
     Q_OBJECT
 
 public:
+    void updateTeamOneInfo();
+    void updateTeamTwoInfo();
+    void updateVSInfo();
     explicit Bota2(QWidget *parent = 0);
     ~Bota2();
 

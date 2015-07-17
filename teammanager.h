@@ -2,6 +2,7 @@
 #define TEAMMANAGER_H
 #include "databasemanager.h"
 #include <QString>
+#include <QStringList>
 
 struct teamData{
     int teamID;
@@ -12,22 +13,26 @@ struct teamData{
 
 class teamManager
 {
-    teamData currentTeam;
+    QVector<teamData> currentTeamSet;
+    teamData findTeam(QString teamName);
+    teamData findTeam(int teamID);
+    teamData noTeam();
 public:
     bool addTeam(QString teamName, QString teamLocation, int teamTier);
-    bool prepTeamByID(int teamID);
-    bool prepTeamByName(QString teamName);
 
-    QString getCurrentTeamName();
-    QString getCurrentTeamLocation();
-    int getCurrentTeamTier();
-    int getCurrentTeamID();
+    QStringList getTeamNameList();
+    QString getTeamName(int teamID);
+    QString getTeamLocation(int teamID);
+    QString getTeamLocation(QString teamName);
+    int getTeamTier(int teamID);
+    int getTeamTier(QString teamName);
+    int getTeamID(QString teamName);
 
-    int fetchIdByTeamName(QString teamName); //does not overwrite current team set, just incase neccesary
 
-    bool removeTeamByName(QString teamName);
-    bool removeTeamByID(int teamID);
+    bool removeTeam(QString teamName);
+    bool removeTeam(int teamID);
 
+    void updateCurrentTeamSet();
     teamManager();
 };
 
