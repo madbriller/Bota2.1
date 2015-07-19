@@ -5,6 +5,12 @@ teamManager::teamManager()
     updateCurrentTeamSet();
 }
 
+teamManager* teamManager::instance() {
+    static teamManager m_instance;
+    return &m_instance;
+
+}
+
 bool teamManager::addTeam(QString teamName, QString teamLocation, int teamTier){
     databaseManager* dbm = databaseManager::instance();
     bool success = false;
@@ -62,12 +68,12 @@ QString teamManager::getTeamLocation(QString teamName) {
     return findTeam(teamName).teamLocation;
 }
 
-int teamManager::getTeamTier(int teamID) {
-    return findTeam(teamID).teamTier;
+QString teamManager::getTeamTier(int teamID) {
+    return QString::number(findTeam(teamID).teamTier);
 }
 
-int teamManager::getTeamTier(QString teamName) {
-    return findTeam(teamName).teamTier;
+QString teamManager::getTeamTier(QString teamName) {
+    return QString::number(findTeam(teamName).teamTier);
 }
 
 int teamManager::getTeamID(QString teamName) {
@@ -108,9 +114,8 @@ void teamManager::updateCurrentTeamSet() {
     QString theQuery("SELECT * FROM teams");
     dbm->prepareAndExecQuery(theQuery);
 
-    int rows = dbm->getRowCount();
-    for(int ite=1;ite<=rows;ite++) {
-        QSqlRecord teamRecord = dbm->getNextRow();
+    while(dbm->next()){
+        QSqlRecord teamRecord = dbm->getCurrentRecord();
         teamData currentTeam;
         currentTeam.teamID = teamRecord.value(0).toInt();
         currentTeam.teamName = teamRecord.value(1).toString();

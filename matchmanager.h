@@ -21,17 +21,22 @@ struct matchData{
 class matchManager
 {
     QVector<matchData> currentMatchSet;
-
 public:
-    matchManager();
+    static matchManager* instance();
     bool prepAllGamesByTeam(int teamID);
     bool prepAllGamesByVs(int team1ID, int team2ID);
-    int getMatchWinByTeam(int teamID); //returns as a percentage
-    int getGameWinByTeam(int teamID); //returns as a percentage
-    int getBoByNoAndTeam(int bestOfCount, int teamID); //returns as a percentage
-    int getTotalMatchCount();
-    bool hasRecords();
 
+    QString getMatchWinByTeam(int teamID); //returns as a percentage
+    QString getGameWinByTeam(int teamID); //returns as a percentage
+    QString getBoByNoAndTeam(int bestOfCount, int teamID); //returns as a percentage
+
+    int getTotalMatchCount();
+
+    bool hasRecords();
+protected:
+    matchManager();
+    matchManager(const matchManager&);
+    matchManager operator= (const matchManager&);
 };
 
 #endif // MATCHMANAGER_H

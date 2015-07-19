@@ -6,7 +6,14 @@ databaseManager::databaseManager()
     mainConnection =  QSqlDatabase::addDatabase("QSQLITE");
     mainConnection.setDatabaseName("data.db3");
     mainConnection.open();
-    ready = false;
+    ready = false; //ready determines whether there is a query currently being stored
+                   //not a description of connection status, possible ambiguity
+}
+
+databaseManager* databaseManager::instance() {
+    static databaseManager m_instance;
+    return &m_instance;
+
 }
 
 databaseManager::~databaseManager()
@@ -15,20 +22,21 @@ databaseManager::~databaseManager()
 }
 
 bool databaseManager::prepareAndExecQuery(QString queryString){
-    rowCount = 0;
     delete currentQuery;
     currentQuery = NULL;
-    currentQuery = new QSqlQuery;
+    currentQuery = new QSqlQuery(mainConnection);
     currentQuery->prepare(queryString);
     ready = currentQuery->exec();
-    if (ready == true)
-        rowCount = currentQuery->size();
     return ready;
 }
 
-QSqlRecord databaseManager::getNextRow(){
-    currentQuery->next();
+QSqlRecord databaseManager::getCurrentRecord()
+{
     return currentQuery->record();
+}
+
+bool databaseManager::next(){
+    return currentQuery->next();
 }
 
 bool databaseManager::isQueryActive(){
@@ -42,12 +50,3 @@ bool databaseManager::isReady(){
     return ready;
 }
 
-databaseManager* databaseManager::instance() {
-    static databaseManager m_instance;
-    return &m_instance;
-
-}
-
-int databaseManager::getRowCount() {
-    return rowCount;
-}

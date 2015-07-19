@@ -99,13 +99,6 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="7">
-      <widget class="QLabel" name="TeamTwo30Days">
-       <property name="text">
-        <string>Past 30 Days:</string>
-       </property>
-      </widget>
-     </item>
      <item row="5" column="5">
       <widget class="QLabel" name="lblVSTeamTwoBO2">
        <property name="text">
@@ -223,13 +216,6 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="7">
-      <widget class="QLabel" name="TeamTwo7Days">
-       <property name="text">
-        <string>Past 7 Days:</string>
-       </property>
-      </widget>
-     </item>
      <item row="6" column="3">
       <widget class="QLabel" name="lblVSTeamOneBO3">
        <property name="text">
@@ -241,9 +227,9 @@
       </widget>
      </item>
      <item row="4" column="7">
-      <widget class="QLabel" name="TeamTwoOverall">
+      <widget class="QLabel" name="TeamTwoOverallGame">
        <property name="text">
-        <string>Overall:</string>
+        <string>Overall Game:</string>
        </property>
       </widget>
      </item>
@@ -313,13 +299,6 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="TeamOne30Days">
-       <property name="text">
-        <string>Past 30 Days:</string>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0" colspan="2">
       <widget class="QComboBox" name="comboTeamOne"/>
      </item>
@@ -355,16 +334,17 @@
       </widget>
      </item>
      <item row="4" column="0">
-      <widget class="QLabel" name="TeamOneOveral">
-       <property name="text">
-        <string>Overall:</string>
+      <widget class="QLabel" name="TeamOneOverallGame">
+       <property name="font">
+        <font>
+         <kerning>true</kerning>
+        </font>
        </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="TeamOne7Days">
        <property name="text">
-        <string>Past 7 Days:</string>
+        <string>Overall Game:</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
        </property>
       </widget>
      </item>
@@ -443,42 +423,114 @@
       </widget>
      </item>
      <item row="4" column="1">
-      <widget class="QLabel" name="lblTeamOneOverall">
-       <property name="text">
-        <string>50%</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QLabel" name="lblTeamOne7Days">
-       <property name="text">
-        <string>50%</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="1">
-      <widget class="QLabel" name="lblTeamOne30Days">
-       <property name="text">
-        <string>50%</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="8">
-      <widget class="QLabel" name="lblTeamTwo30Days">
-       <property name="text">
-        <string>50%</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="8">
-      <widget class="QLabel" name="lblTeamTwo7Days">
+      <widget class="QLabel" name="lblTeamOneOverallGame">
        <property name="text">
         <string>50%</string>
        </property>
       </widget>
      </item>
      <item row="4" column="8">
-      <widget class="QLabel" name="lblTeamTwoOverall">
+      <widget class="QLabel" name="lblTeamTwoOverallGame">
+       <property name="text">
+        <string>50%</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="TeamOne30Days">
+       <property name="text">
+        <string>Past 30 Days:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLabel" name="lblTeamOne30Days">
+       <property name="text">
+        <string>50%</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLabel" name="lblTeamOne7Days">
+       <property name="text">
+        <string>50%</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="TeamOne7Days">
+       <property name="text">
+        <string>Past 7 Days:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="7">
+      <widget class="QLabel" name="TeamTwo30Days">
+       <property name="text">
+        <string>Past 30 Days:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="8">
+      <widget class="QLabel" name="lblTeamTwo30Days">
+       <property name="text">
+        <string>50%</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="8">
+      <widget class="QLabel" name="lblTeamTwo7Days">
+       <property name="text">
+        <string>50%</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="7">
+      <widget class="QLabel" name="TeamTwo7Days">
+       <property name="text">
+        <string>Past 7 Days:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="TeamOneOverallMatch">
+       <property name="font">
+        <font>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="text">
+        <string>Overall Match:</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="7">
+      <widget class="QLabel" name="TeamTwoOverallMatch">
+       <property name="font">
+        <font>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="text">
+        <string>Overall Match:</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLabel" name="lblTeamOneOverallMatch">
+       <property name="text">
+        <string>50%</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="8">
+      <widget class="QLabel" name="lblTeamTwoOverallMatch">
        <property name="text">
         <string>50%</string>
        </property>

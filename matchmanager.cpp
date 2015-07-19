@@ -1,6 +1,16 @@
 #include "matchmanager.h"
 #include <QMap>
 
+matchManager::matchManager()
+{
+}
+
+matchManager* matchManager::instance() {
+    static matchManager m_instance;
+    return &m_instance;
+
+}
+
 bool matchManager::prepAllGamesByTeam(int teamID) {
     currentMatchSet.clear(); //Clear the current match set to make way for new records
     databaseManager* dbm = databaseManager::instance(); //get instance of database manager singleton
@@ -11,20 +21,19 @@ bool matchManager::prepAllGamesByTeam(int teamID) {
     theQuery += QString::number(teamID) + ";";
 
     if (dbm->prepareAndExecQuery(theQuery) == true) { //execute query, and if successful..
-        int rows = dbm->getRowCount();
-        for (int ite=1;ite<=rows;ite++) { //iterate through all matches, creating a record
-            QSqlRecord matchRecord = dbm->getNextRow();
+       while(dbm->next()) { //iterate through all matches, creating a record
+            QSqlRecord matchRecord = dbm->getCurrentRecord();
             matchData currentMatch;
             currentMatch.team1ID = matchRecord.value(1).toInt();
             currentMatch.team2ID = matchRecord.value(2).toInt();
             currentMatch.winnerID = matchRecord.value(3).toInt();
             currentMatch.noOfGames = matchRecord.value(4).toInt();
             currentMatch.team1Wins = matchRecord.value(5).toInt();
-            currentMatch.team1Wins = matchRecord.value(6).toInt();
+            currentMatch.team2Wins = matchRecord.value(6).toInt();
             currentMatch.matchDate = QDate::fromString(matchRecord.value(7).toString());
             currentMatchSet.push_front(currentMatch); //create a record and push into storage
-            return true;
         }
+       return true;
     }
     return false;
 }
@@ -45,9 +54,8 @@ bool matchManager::prepAllGamesByVs(int team1ID, int team2ID) {
     theQuery += ");";
 
     if (dbm->prepareAndExecQuery(theQuery) == true) { //execute query, and if successful..
-        int rows = dbm->getRowCount();
-        for (int ite=1;ite<=rows;ite++) { //iterate through all matches, creating a record
-            QSqlRecord matchRecord = dbm->getNextRow();
+        while(dbm->next()) { //iterate through all matches, creating a record
+            QSqlRecord matchRecord = dbm->getCurrentRecord();
             matchData currentMatch;
             currentMatch.team1ID = matchRecord.value(1).toInt();
             currentMatch.team2ID = matchRecord.value(2).toInt();
@@ -56,20 +64,23 @@ bool matchManager::prepAllGamesByVs(int team1ID, int team2ID) {
             currentMatch.team1Wins = matchRecord.value(5).toInt();
             currentMatch.team1Wins = matchRecord.value(6).toInt();
             currentMatch.matchDate =  QDate::fromString(matchRecord.value(7).toString());
-            currentMatchSet.push_front(currentMatch); //create a record and push into storage
-            return true;
+            currentMatchSet.push_front(currentMatch); //create a record and push into storage 
         }
+        return true;
     }
     return false;
 }
 
-int matchManager::getMatchWinByTeam(int teamID) {
+QString matchManager::getMatchWinByTeam(int teamID) { //returns wins as a function of overall matches played
     QMap<int,int> results;
     foreach(matchData currentMatch, currentMatchSet) {
-        results[currentMatch.team1ID] += currentMatch.team1Wins;
-        results[currentMatch.team2ID] += currentMatch.team2Wins;
+        results[currentMatch.winnerID]++;
     }
-    return int((results[teamID] / currentMatchSet.size()) + 0.5); //0.5 for rounding
+    float size = currentMatchSet.size();
+    float result = results[teamID];
+    float percent = (result / size) *100;
+    QString ret = QString::number(percent);
+    return QString::number(percent);
 
 // old method, using branching rather than data
 //    int matchCount, matchWinCount;
@@ -82,13 +93,19 @@ int matchManager::getMatchWinByTeam(int teamID) {
 //    return int(winPercent + 0.5;
 }
 
-int matchManager::getGameWinByTeam(int teamID){
+QString matchManager::getGameWinByTeam(int teamID){ //returns wins as a function of overall single games played
     QMap<int,int> results;
+    int gameCount = 0;
     foreach(matchData currentMatch, currentMatchSet) {
         results[currentMatch.team1ID] += currentMatch.team1Wins;
         results[currentMatch.team2ID] += currentMatch.team2Wins;
+        gameCount += currentMatch.team1Wins + currentMatch.team2Wins;
     }
-    return int((results[teamID] / currentMatchSet.size()) + 0.5); //0.5 for rounding
+    float result = results[teamID];
+    float percent = (result / gameCount)*100;
+    QString ret = QString::number(percent);
+    ret.truncate(5);
+    return ret;
 
 // old method, using branching rather than data
 //    int gameCount, gameWinCount;
@@ -105,9 +122,9 @@ int matchManager::getGameWinByTeam(int teamID){
 //    return int(winPercent + 0.5);
 }
 
-int matchManager::getBoByNoAndTeam(int bestOfCount, int teamID){
+QString matchManager::getBoByNoAndTeam(int bestOfCount, int teamID){
     QMap<int,int> results;
-    int matchCount;
+    int matchCount=0;
     foreach (matchData currentMatch, currentMatchSet) {
         if(currentMatch.noOfGames == bestOfCount) {
             results[currentMatch.team1ID] += currentMatch.team1Wins;
@@ -115,7 +132,7 @@ int matchManager::getBoByNoAndTeam(int bestOfCount, int teamID){
             matchCount++;
         }
     }
-    return int((results[teamID] / matchCount) + 0.5); //0.5 for rounding
+    return QString::number(int((results[teamID] / matchCount) + 0.5)); //0.5 for rounding
 }
 
 int matchManager::getTotalMatchCount(){
@@ -127,6 +144,3 @@ bool matchManager::hasRecords()
     return !currentMatchSet.empty(); //returns inverse of empty
 }
 
-matchManager::matchManager()
-{
-}

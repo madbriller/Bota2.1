@@ -18,14 +18,16 @@ class teamManager
     teamData findTeam(int teamID);
     teamData noTeam();
 public:
+    static teamManager* instance();
+
     bool addTeam(QString teamName, QString teamLocation, int teamTier);
 
     QStringList getTeamNameList();
     QString getTeamName(int teamID);
     QString getTeamLocation(int teamID);
     QString getTeamLocation(QString teamName);
-    int getTeamTier(int teamID);
-    int getTeamTier(QString teamName);
+    QString getTeamTier(int teamID);
+    QString getTeamTier(QString teamName);
     int getTeamID(QString teamName);
 
 
@@ -33,6 +35,9 @@ public:
     bool removeTeam(int teamID);
 
     void updateCurrentTeamSet();
+protected:
+    teamManager(const teamManager&);
+    teamManager operator= (const teamManager&);
     teamManager();
 };
 

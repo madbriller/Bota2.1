@@ -8,15 +8,14 @@ private:
     QSqlDatabase mainConnection;
     QSqlQuery* currentQuery;
     bool ready;
-    int rowCount;
 public:
-    int getRowCount();
     static databaseManager* instance();
     bool isReady();
     ~databaseManager();
     bool prepareAndExecQuery(QString queryString);
     QSqlQuery* getRefActiveQuery();
-    QSqlRecord getNextRow();
+    QSqlRecord getCurrentRecord();
+    bool next();
     bool isQueryActive();
 protected:
     databaseManager();
