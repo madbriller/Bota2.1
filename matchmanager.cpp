@@ -72,15 +72,16 @@ bool matchManager::prepAllGamesByVs(int team1ID, int team2ID) {
 }
 
 QString matchManager::getMatchWinByTeam(int teamID) { //returns wins as a function of overall matches played
-    QMap<int,int> results;
+    QMap<int,float> results;
+    if (currentMatchSet.size() == 0) return "N/A";
     foreach(matchData currentMatch, currentMatchSet) {
-        results[currentMatch.winnerID]++;
+        results[currentMatch.winnerID]+=1;
     }
-    float size = currentMatchSet.size();
-    float result = results[teamID];
-    float percent = (result / size) *100;
+    float percent = (results[teamID] / currentMatchSet.size()) *100;
     QString ret = QString::number(percent);
-    return QString::number(percent);
+    ret.truncate(5);
+    ret += "%";
+    return ret;
 
 // old method, using branching rather than data
 //    int matchCount, matchWinCount;
@@ -94,17 +95,18 @@ QString matchManager::getMatchWinByTeam(int teamID) { //returns wins as a functi
 }
 
 QString matchManager::getGameWinByTeam(int teamID){ //returns wins as a function of overall single games played
-    QMap<int,int> results;
+    QMap<int,float> results;
     int gameCount = 0;
     foreach(matchData currentMatch, currentMatchSet) {
         results[currentMatch.team1ID] += currentMatch.team1Wins;
         results[currentMatch.team2ID] += currentMatch.team2Wins;
         gameCount += currentMatch.team1Wins + currentMatch.team2Wins;
     }
-    float result = results[teamID];
-    float percent = (result / gameCount)*100;
+    if (gameCount == 0) return "N/A";
+    float percent = (results[teamID] / gameCount) * 100;
     QString ret = QString::number(percent);
     ret.truncate(5);
+    ret += "%";
     return ret;
 
 // old method, using branching rather than data
@@ -123,16 +125,21 @@ QString matchManager::getGameWinByTeam(int teamID){ //returns wins as a function
 }
 
 QString matchManager::getBoByNoAndTeam(int bestOfCount, int teamID){
-    QMap<int,int> results;
+    QMap<int,float> results;
     int matchCount=0;
     foreach (matchData currentMatch, currentMatchSet) {
         if(currentMatch.noOfGames == bestOfCount) {
-            results[currentMatch.team1ID] += currentMatch.team1Wins;
-            results[currentMatch.team2ID] += currentMatch.team2Wins;
+          //  QDate currentMatchDate = QDate::fromString(currentMatch.matchDate);
+            results[currentMatch.winnerID] += 1;
             matchCount++;
         }
     }
-    return QString::number(int((results[teamID] / matchCount) + 0.5)); //0.5 for rounding
+    if (matchCount == 0) return "N/A";
+    float percent = (results[teamID] / matchCount) * 100;
+    QString ret = QString::number(percent);
+    ret.truncate(5);
+    ret += "%";
+    return ret;
 }
 
 int matchManager::getTotalMatchCount(){

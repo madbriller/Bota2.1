@@ -92,6 +92,90 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
+     <item row="7" column="7">
+      <widget class="QLabel" name="TeamTwo30Days">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>Past 30 Days:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="8">
+      <widget class="QLabel" name="lblTeamTwo7Days">
+       <property name="text">
+        <string>50%</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="7">
+      <widget class="QLabel" name="TeamTwo7Days">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>Past 7 Days:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="7">
+      <widget class="QLabel" name="TeamTwoOverallMatch">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="text">
+        <string>Overall Match:</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="8">
+      <widget class="QLabel" name="lblTeamTwo30Days">
+       <property name="text">
+        <string>50%</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="TeamOneOverallMatch">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+         <kerning>true</kerning>
+        </font>
+       </property>
+       <property name="text">
+        <string>Overall Match:</string>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLabel" name="lblTeamOneOverallMatch">
+       <property name="text">
+        <string>50%</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="8">
+      <widget class="QLabel" name="lblTeamTwoOverallMatch">
+       <property name="text">
+        <string>50%</string>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="8">
       <widget class="QLabel" name="lblTeamTwoTier">
        <property name="text">
@@ -99,18 +183,8 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="5">
-      <widget class="QLabel" name="lblVSTeamTwoBO2">
-       <property name="text">
-        <string>50%</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="5">
-      <widget class="QLabel" name="lblVSTeamTwoBO1">
+     <item row="6" column="5">
+      <widget class="QLabel" name="lblVSTeamTwoBO3">
        <property name="text">
         <string>50%</string>
        </property>
@@ -129,8 +203,73 @@
        </property>
       </widget>
      </item>
-     <item row="6" column="5">
-      <widget class="QLabel" name="lblVSTeamTwoBO3">
+     <item row="4" column="5">
+      <widget class="QLabel" name="lblVSTeamTwoBO1">
+       <property name="text">
+        <string>50%</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="5">
+      <widget class="QLabel" name="lblVSTeamTwoBO2">
+       <property name="text">
+        <string>50%</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="4">
+      <widget class="QLabel" name="VersusBO5">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>BO5</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="4">
+      <widget class="QLabel" name="VersusBO2">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>BO2</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="4">
+      <widget class="QLabel" name="VersusBO1">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>BO1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="5">
+      <widget class="QLabel" name="lblVSTeamTwoOverall">
        <property name="text">
         <string>50%</string>
        </property>
@@ -146,8 +285,8 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="5">
-      <widget class="QLabel" name="lblVSTeamTwoOverall">
+     <item row="4" column="3">
+      <widget class="QLabel" name="lblVSTeamOneBO1">
        <property name="text">
         <string>50%</string>
        </property>
@@ -156,38 +295,13 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="4">
-      <widget class="QLabel" name="VersusBO1">
-       <property name="text">
-        <string>BO1</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="4">
-      <widget class="QLabel" name="VersusBO2">
-       <property name="text">
-        <string>BO2</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="4">
-      <widget class="QLabel" name="VersusBO5">
-       <property name="text">
-        <string>BO5</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
      <item row="6" column="4">
       <widget class="QLabel" name="VersusBO3">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
        <property name="text">
         <string>BO3</string>
        </property>
@@ -206,13 +320,53 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="3">
-      <widget class="QLabel" name="lblVSTeamOneBO1">
+     <item row="1" column="5">
+      <widget class="QLabel" name="VersusTeamTwo">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
-        <string>50%</string>
+        <string>Team Two</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="7">
+      <widget class="QLabel" name="TeamTwoOverallGame">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>Overall Game:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLabel" name="VersusTeamOne">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string>Team One</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -226,53 +380,16 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="7">
-      <widget class="QLabel" name="TeamTwoOverallGame">
-       <property name="text">
-        <string>Overall Game:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="3">
-      <widget class="QLabel" name="VersusTeamOne">
-       <property name="text">
-        <string>Team One</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="4">
       <widget class="QLabel" name="VersusType">
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="text">
         <string>Type</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="5">
-      <widget class="QLabel" name="VersusTeamTwo">
-       <property name="text">
-        <string>Team Two</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-       <property name="wordWrap">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="4">
-      <widget class="QLabel" name="VersusOverall">
-       <property name="text">
-        <string>Overall </string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -283,6 +400,21 @@
       <widget class="QLabel" name="lblVSTeamOneOverall">
        <property name="text">
         <string>50%</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="4">
+      <widget class="QLabel" name="VersusOverall">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>Overall</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -314,6 +446,23 @@
      </item>
      <item row="2" column="0">
       <widget class="QLabel" name="TeamOneTier">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="text">
+        <string>Tier:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="7">
+      <widget class="QLabel" name="TeamTwoTier">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
        <property name="text">
         <string>Tier:</string>
        </property>
@@ -321,15 +470,28 @@
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="TeamOneLocation">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
        <property name="text">
         <string>Location:</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="7">
-      <widget class="QLabel" name="TeamTwoTier">
+     <item row="0" column="7" colspan="2">
+      <widget class="QComboBox" name="comboTeamTwo"/>
+     </item>
+     <item row="1" column="7">
+      <widget class="QLabel" name="TeamTwoLocation">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
        <property name="text">
-        <string>Tier:</string>
+        <string>Location:</string>
        </property>
       </widget>
      </item>
@@ -337,6 +499,7 @@
       <widget class="QLabel" name="TeamOneOverallGame">
        <property name="font">
         <font>
+         <underline>true</underline>
          <kerning>true</kerning>
         </font>
        </property>
@@ -348,22 +511,19 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="7">
-      <widget class="QLabel" name="TeamTwoLocation">
-       <property name="text">
-        <string>Location:</string>
+     <item row="0" column="2" rowspan="8">
+      <widget class="Line" name="line_6">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
       </widget>
      </item>
-     <item row="0" column="3">
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string/>
+     <item row="0" column="6" rowspan="8">
+      <widget class="Line" name="line_7">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
       </widget>
-     </item>
-     <item row="0" column="7" colspan="2">
-      <widget class="QComboBox" name="comboTeamTwo"/>
      </item>
      <item row="1" column="1">
       <widget class="QLabel" name="lblTeamOneLocation">
@@ -387,13 +547,6 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
-      <widget class="QLabel" name="lblTeamOneTier">
-       <property name="text">
-        <string>1</string>
-       </property>
-      </widget>
-     </item>
      <item row="3" column="0" colspan="2">
       <widget class="Line" name="line">
        <property name="orientation">
@@ -408,17 +561,10 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="2" rowspan="8">
-      <widget class="Line" name="line_6">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="6" rowspan="8">
-      <widget class="Line" name="line_7">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
+     <item row="2" column="1">
+      <widget class="QLabel" name="lblTeamOneTier">
+       <property name="text">
+        <string>1</string>
        </property>
       </widget>
      </item>
@@ -433,13 +579,6 @@
       <widget class="QLabel" name="lblTeamTwoOverallGame">
        <property name="text">
         <string>50%</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="TeamOne30Days">
-       <property name="text">
-        <string>Past 30 Days:</string>
        </property>
       </widget>
      </item>
@@ -459,81 +598,55 @@
      </item>
      <item row="6" column="0">
       <widget class="QLabel" name="TeamOne7Days">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
        <property name="text">
         <string>Past 7 Days:</string>
        </property>
       </widget>
      </item>
-     <item row="7" column="7">
-      <widget class="QLabel" name="TeamTwo30Days">
+     <item row="7" column="0">
+      <widget class="QLabel" name="TeamOne30Days">
+       <property name="font">
+        <font>
+         <underline>true</underline>
+        </font>
+       </property>
        <property name="text">
         <string>Past 30 Days:</string>
        </property>
       </widget>
      </item>
-     <item row="7" column="8">
-      <widget class="QLabel" name="lblTeamTwo30Days">
-       <property name="text">
-        <string>50%</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="8">
-      <widget class="QLabel" name="lblTeamTwo7Days">
-       <property name="text">
-        <string>50%</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="7">
-      <widget class="QLabel" name="TeamTwo7Days">
-       <property name="text">
-        <string>Past 7 Days:</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLabel" name="TeamOneOverallMatch">
-       <property name="font">
-        <font>
-         <kerning>true</kerning>
-        </font>
-       </property>
-       <property name="text">
-        <string>Overall Match:</string>
-       </property>
-       <property name="wordWrap">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="7">
-      <widget class="QLabel" name="TeamTwoOverallMatch">
-       <property name="font">
-        <font>
-         <kerning>true</kerning>
-        </font>
-       </property>
-       <property name="text">
-        <string>Overall Match:</string>
-       </property>
-       <property name="wordWrap">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="1">
-      <widget class="QLabel" name="lblTeamOneOverallMatch">
-       <property name="text">
-        <string>50%</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="8">
-      <widget class="QLabel" name="lblTeamTwoOverallMatch">
-       <property name="text">
-        <string>50%</string>
-       </property>
+     <item row="0" column="3" colspan="3">
+      <widget class="QComboBox" name="comboVersusTime">
+       <item>
+        <property name="text">
+         <string>All Time</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Past Week</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Past 2 Weeks</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Past Month</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Past 6 Months</string>
+        </property>
+       </item>
       </widget>
      </item>
     </layout>
@@ -552,6 +665,7 @@
     <property name="title">
      <string>Teams</string>
     </property>
+    <addaction name="actionAdd_Quick"/>
    </widget>
    <widget class="QMenu" name="menuMatches">
     <property name="title">
@@ -576,6 +690,11 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionAdd_Quick">
+   <property name="text">
+    <string>Add Quick</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

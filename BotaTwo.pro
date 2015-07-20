@@ -16,15 +16,18 @@ SOURCES += main.cpp\
         bota2.cpp \
     databasemanager.cpp \
     matchmanager.cpp \
-    teammanager.cpp
+    teammanager.cpp \
+    addteam.cpp
 
 HEADERS  += bota2.h \
     databasemanager.h \
     matchmanager.h \
-    teammanager.h
+    teammanager.h \
+    addteam.h
 
 FORMS    += \
-    bota2.ui
+    bota2.ui \
+    addteam.ui
 
 OTHER_FILES += \
     bota2.asdadui

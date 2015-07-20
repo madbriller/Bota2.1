@@ -11,14 +11,14 @@ teamManager* teamManager::instance() {
 
 }
 
-bool teamManager::addTeam(QString teamName, QString teamLocation, int teamTier){
+bool teamManager::addTeam(QString teamName, QString teamLocation, QString teamTier){
     databaseManager* dbm = databaseManager::instance();
     bool success = false;
     if (findTeam(teamName).teamID == -1) {
-        QString theQuery("INSERT INTO teams VALUES (");
-        theQuery += teamName + ",";
-        theQuery += teamTier + ",";
-        theQuery += teamLocation + ");";
+        QString theQuery("INSERT INTO teams (teamName,teamTier,teamLocation) VALUES ('");
+        theQuery += teamName + "','";
+        theQuery += teamTier + "','";
+        theQuery += teamLocation + "');";
         success = dbm->prepareAndExecQuery(theQuery);
         updateCurrentTeamSet();
     }

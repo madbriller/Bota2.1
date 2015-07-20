@@ -25,8 +25,7 @@ bool databaseManager::prepareAndExecQuery(QString queryString){
     delete currentQuery;
     currentQuery = NULL;
     currentQuery = new QSqlQuery(mainConnection);
-    currentQuery->prepare(queryString);
-    ready = currentQuery->exec();
+    ready = currentQuery->exec(queryString);
     return ready;
 }
 

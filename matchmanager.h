@@ -28,7 +28,8 @@ public:
 
     QString getMatchWinByTeam(int teamID); //returns as a percentage
     QString getGameWinByTeam(int teamID); //returns as a percentage
-    QString getBoByNoAndTeam(int bestOfCount, int teamID); //returns as a percentage
+    QString getBoByNoAndTeam(int bestOfCount, int teamID); //returns as a percentage, takes 0 to not consider bestOfCount
+    QString getDatedMatchWinByTeam(int teamID, int timeRange); //returns as a percentage, takes timeRange in days
 
     int getTotalMatchCount();
 

@@ -23,6 +23,8 @@ public:
 private slots:
     void on_comboTeamOne_currentIndexChanged(const QString &arg1);
     void on_comboTeamTwo_currentIndexChanged(const QString &arg1);
+    void on_actionAdd_Quick_triggered();
+
 private:
     matchManager* mm;
     teamManager* tm;

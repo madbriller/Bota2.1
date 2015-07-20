@@ -20,7 +20,7 @@ class teamManager
 public:
     static teamManager* instance();
 
-    bool addTeam(QString teamName, QString teamLocation, int teamTier);
+    bool addTeam(QString teamName, QString teamLocation, QString teamTier);
 
     QStringList getTeamNameList();
     QString getTeamName(int teamID);
